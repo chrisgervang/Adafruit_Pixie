@@ -1,7 +1,7 @@
 #include "Adafruit_Pixie.h"
 
 Adafruit_Pixie::Adafruit_Pixie(uint16_t n, Stream *s) :
-  numLEDs(n), brightness(0), pixels(NULL), endTime(0), stream(s) {
+  numLEDs(n), pixels(NULL), endTime(0), stream(s) {
   if((pixels = (uint8_t *)malloc(n * 4))) {
     memset(pixels, 0, n * 4);
   }
@@ -18,17 +18,17 @@ void Adafruit_Pixie::show(void) {
   if(pixels) {
     uint16_t n3 = numLEDs * 4;
     while(!canShow());  // Wait for 1ms elapsed since prior call
-    if(!brightness) {   // No brightness adjust, output full blast
-      stream->write(pixels, n3);
-    } else {            // Scale back brightness for every pixel R,G,B:
-      uint16_t i, b16 = (uint16_t)brightness;
+    // if(!brightness) {   // No brightness adjust, output full blast
+    //   stream->write(pixels, n3);
+    // } else {            // Scale back brightness for every pixel R,G,B:
+      uint16_t i;
       for(i=0; i<n3; i++) {
         stream->write((pixels[i] * pixels[i+3]) >> 8);
         stream->write((pixels[++i] * pixels[i+2]) >> 8);
         stream->write((pixels[++i] * pixels[i+1]) >> 8);
         i++
       }
-    }
+    //}
     endTime = micros(); // Save EOD time for latch on next call
   }
 }
@@ -87,10 +87,10 @@ uint32_t Adafruit_Pixie::getPixelColor(uint16_t n) const {
 //   brightness = b + 1;
 // }
 
-// Return the brightness value
-uint8_t Adafruit_Pixie::getBrightness(void) const {
-  return brightness - 1; // Reverse above operation
-}
+// // Return the brightness value
+// uint8_t Adafruit_Pixie::getBrightness(void) const {
+//   return brightness - 1; // Reverse above operation
+// }
 
 void Adafruit_Pixie::clear() {
   memset(pixels, 0, numLEDs * 4);

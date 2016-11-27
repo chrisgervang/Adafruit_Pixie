@@ -17,12 +17,12 @@ class Adafruit_Pixie {
 
   void
     show(void),
-    setPixelColor(uint16_t n, uint8_t r, uint8_t g, uint8_t b),
-    setPixelColor(uint16_t n, uint32_t c),
-    setBrightness(uint8_t b),
+    setPixelColor(uint16_t n, uint8_t r, uint8_t g, uint8_t b, uint8_t brightness),
+    setPixelColor(uint16_t n, uint32_t c, uint8_t brightness),
+    //setBrightness(uint8_t b),
     clear();
   uint8_t
-    getBrightness(void) const,
+    //getBrightness(void) const,
    *getPixels(void) const { return pixels; };
   uint16_t
     numPixels(void) const { return numLEDs; };
@@ -38,7 +38,7 @@ class Adafruit_Pixie {
   const uint16_t
     numLEDs;    // Number of RGB LEDs in chain
   uint8_t
-    brightness,
+    //brightness,
     *pixels;    // Holds LED color values (3 bytes each)
   uint32_t
     endTime;    // Latch timing reference
