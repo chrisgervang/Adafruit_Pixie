@@ -7,15 +7,12 @@
   Do not look into Pixie with remaining eye!
 */
 
-#include "SoftwareSerial.h"
 #include "Adafruit_Pixie.h"
 
 #define NUMPIXELS 3 // Number of Pixies in the strip
-#define PIXIEPIN  6 // Pin number for SoftwareSerial output
 
-SoftwareSerial pixieSerial(-1, PIXIEPIN);
 
-Adafruit_Pixie strip = Adafruit_Pixie(NUMPIXELS, &pixieSerial);
+Adafruit_Pixie strip = Adafruit_Pixie(NUMPIXELS, &Serial1);
 // Alternately, can use a hardware serial port for output, e.g.:
 // Adafruit_Pixie strip = Adafruit_Pixie(NUMPIXELS, &Serial1);
 
@@ -25,8 +22,8 @@ void setup() {
   Serial.begin(9600);
   Serial.println("Ready to Pixie!");
 
-  pixieSerial.begin(115200); // Pixie REQUIRES this baud rate
-  // Serial1.begin(115200);  // <- Alt. if using hardware serial port
+  //pixieSerial.begin(115200); // Pixie REQUIRES this baud rate
+  Serial1.begin(115200);  // <- Alt. if using hardware serial port
 
   strip.setBrightness(200);  // Adjust as necessary to avoid blinding
 
