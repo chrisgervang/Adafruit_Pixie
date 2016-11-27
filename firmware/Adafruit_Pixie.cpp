@@ -26,7 +26,7 @@ void Adafruit_Pixie::show(void) {
         stream->write((pixels[i] * pixels[i+3]) >> 8);
         stream->write((pixels[++i] * pixels[i+2]) >> 8);
         stream->write((pixels[++i] * pixels[i+1]) >> 8);
-        i++
+        i++;
       }
     //}
     endTime = micros(); // Save EOD time for latch on next call
