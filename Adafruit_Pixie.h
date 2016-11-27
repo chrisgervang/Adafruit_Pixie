@@ -1,6 +1,10 @@
 #ifndef ADAFRUIT_PIXIE_H
 #define ADAFRUIT_PIXIE_H
-#include <Arduino.h>
+#if defined(ARDUINO) && ARDUINO >= 100
+#include "Arduino.h"
+#elif defined(PARTICLE)
+#include "application.h"
+#endif
 
 class Adafruit_Pixie {
 
