@@ -7,7 +7,7 @@
   Do not look into Pixie with remaining eye!
 */
 
-#include "Adafruit_Pixie.h"
+#include "Adafruit_Pixie/Adafruit_Pixie.h"
 
 #define NUMPIXELS 3 // Number of Pixies in the strip
 
