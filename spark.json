@@ -1,0 +1,7 @@
+{
+  "name": "Adafuit_Pixie",
+  "author": "Chris Gervang <chris@gervang.com>",
+  "license": "GNU GPL",
+  "version": "1.1",
+  "description": "Particle library (Ported from Arduino) for controlling Serial-based ultra-bright LED pixels and strip."
+}
